@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    container_name: docker-compose-app
+    restart: always
+    build: .
+    ports:
+      - '80:3000'
+    links:
+      - maria
+    depends_on:
+      - maria
+  maria:
+    container_name: maria
+    image: mariadb
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: example

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auction app</title>
+</head>
+<body>
+  <h1>Online Auction House</h1>
+  <ul id="items">
+  </ul>
+  <h2>Bid</h2>
+  <p class="message"></p>
+  <form>
+    <select id="dropdown">
+    </select>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" maxlength="120" required autofocus>
+    <label for="amount">Amount</label>
+    <input type="number" name="amount" id="amount" required>
+    <input type="submit" value="Bid">
+  </form>
+  <script src="./frontend.js"></script>
+</body>
+</html>
