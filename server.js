@@ -5,6 +5,7 @@ const app = express();
 const port = 3000;
 
 const mysql = require('mysql');
+const cors = require('cors');
 
 const conn = mysql.createConnection({
 	host: 'maria',
@@ -12,14 +13,6 @@ const conn = mysql.createConnection({
 	password: 'example',
 	database: 'auction_app'
 });
-
-conn.connect(err => {
-  if (err) {
-    console.log(err.toString());
-    return;
-  }
-    console.log('Connection to DB is A-OK!');
-  });
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -29,7 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/items', (req, res) => {
-  conn.query(`SELECT * FROM items;`, (err, rows) => {
+  conn.query('SELECT * FROM items;', (err, rows) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error!');

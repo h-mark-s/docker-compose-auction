@@ -1,5 +1,12 @@
 version: '3'
 services:
+  maria:
+    container_name: maria
+    image: mariadb
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: example
   app:
     container_name: docker-compose-app
     restart: always
@@ -10,10 +17,3 @@ services:
       - maria
     depends_on:
       - maria
-  maria:
-    container_name: maria
-    image: mariadb
-    ports:
-      - '3306:3306'
-    environment:
-      MYSQL_ROOT_PASSWORD: example

@@ -5,9 +5,20 @@ const listOfItems = document.querySelector('#items');
 const form = document.querySelector('form');
 const message = document.querySelector('.message');
 
+/*
+const loadData = () => {
+
+  fetch('http://localhost:80/api/items')
+    .then(response => response.json())
+		.then(myJson => console.log(myJson))
+}
+
+window.onload = loadData;
+*/
+
 function loadData() {
   const getItems = new XMLHttpRequest();
-  getItems.open('GET', 'http://localhost:4500/api/items');
+  getItems.open('GET', 'http://localhost:80/api/items');
   getItems.setRequestHeader('Content-Type', 'application/json');
   getItems.onload = data => {
     const response = JSON.parse(data.target.response);
@@ -41,7 +52,7 @@ form.addEventListener('submit', (event) => {
     }
   });
 
-  submitBid.open('POST', `http://localhost:4500/api/items/${currentId}/bids`);
+  submitBid.open('POST', `http://localhost:80/api/items/${currentId}/bids`);
   submitBid.setRequestHeader('Content-Type', 'application/json');
   submitBid.onload = data => {
     message.innerText = JSON.parse(data.target.response).message;
